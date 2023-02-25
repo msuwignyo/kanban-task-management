@@ -3,21 +3,20 @@
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "dev": {
-      "dependsOn": ["^db:generate"],
       "cache": false
     },
     "build": {
-      "dependsOn": ["^db:generate", "^build"],
-      "outputs": ["dist/**", ".next/**", "storybook-static/**"],
-      "db:generate": {
-        "cache": false
-      },
-      "db:push": {
-        "cache": false
-      }
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "storybook-static/**"]
     },
     "lint": {
       "outputs": []
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
     }
   }
 }
